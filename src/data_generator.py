@@ -75,7 +75,7 @@ class DataGenerator:
         Some old cellular automata code 
         (just so we have something to look at. It propagates.)
         ''' 
-        n = 20
+        n = 5
         kernel = np.array([
             [1,1,1],
             [1,0,1],

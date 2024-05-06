@@ -21,13 +21,13 @@ class ScrollableHeatmap:
         t:          The initial frame to display (default 0)
     '''
 
-    PATH_DATA = 'src/data/'
-
     def __init__(self,
-                 t: int = 0
+                 t: int = 0,
+                 path_data: str = 'data/'
                  ):
         
         self.t = t
+        self.path_data = path_data
         
         # Get the frame data
         self._get_frames()
@@ -37,7 +37,7 @@ class ScrollableHeatmap:
         return
     
     def _get_frames(self) -> None:
-        self.frames = glob(self.PATH_DATA + 'Frame_*.npy')
+        self.frames = glob(self.path_data + 'Frame_*.npy')
         self.frames.sort()
         return
     
@@ -67,4 +67,4 @@ class ScrollableHeatmap:
         if t is not None:
             if self.t != t:
                 self.set_current_frame(t)
-        return self.cur_frame[x:x+w, y:y+h]
+        return self.cur_frame[y:y+h, x:x+w]
